@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.6);
+        }
+
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .btn {
+            font-size: 20px;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .yes {
+            background-color: #ff4081;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.6);
+        }
+
+        .yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.8);
+        }
+
+        .no {
+            background-color: #d50000;
+            color: white;
+            position: absolute;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(213, 0, 0, 0.6);
+        }
+
+        .no:hover {
+            transform: scale(1.1);
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 25px;
+            color: white;
+            opacity: 0.8;
+            animation: floatUp 6s infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        .glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255, 0, 150, 0.4), transparent);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: pulse 5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Will You Be My Valentine? 💖</h1>
+        <div class="buttons">
+            <button class="btn yes" onclick="showAlerts()">Yes</button>
+            <button class="btn no" id="noButton">No</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('noButton').addEventListener('mouseover', function() {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            this.style.left = x + 'px';
+            this.style.top = y + 'px';
+        });
+
+        function showAlerts() {
+            alert("Aww, I knew you had a soft spot for me! 😘❤️");
+            setTimeout(() => {
+                alert("Oops! Just kidding—I’m only here for the FRIENDship package!😉😂");
+            }, 500);
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("floating-heart");
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.top = Math.random() * window.innerHeight + "px";
+                heart.style.animationDuration = (Math.random() * 5 + 3) + "s";
+                document.body.appendChild(heart);
+            }
+        }
+
+        function createGlow() {
+            for (let i = 0; i < 3; i++) {
+                let glow = document.createElement("div");
+                glow.classList.add("glow");
+                glow.style.left = Math.random() * window.innerWidth + "px";
+                glow.style.top = Math.random() * window.innerHeight + "px";
+                document.body.appendChild(glow);
+            }
+        }
+
+        createHearts();
+        createGlow();
+    </script>
+
+</body>
+</html>
